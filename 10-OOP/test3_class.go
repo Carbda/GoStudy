@@ -40,7 +40,7 @@ func (man *SuperMan) print() {
 
 }
 
-func main() {
+func main3() {
 	h := Human{"zhangsan", "male"}
 	h.Eat()
 	h.Walk()
