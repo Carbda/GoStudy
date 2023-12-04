@@ -31,4 +31,7 @@ func main() {
 
 	fibonacci(c, quit)
 
+	str := "abc"
+	fmt.Printf("type: %T\n", str[1])
+	fmt.Println(str[1])
 }
