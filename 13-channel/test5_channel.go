@@ -16,6 +16,12 @@ func fibonacci(c chan int, quit chan int) {
 	}
 }
 
+/*
+select：如果有多个 case 都可以运行，select 会随机公平地选出一个执行，其他不会执行
+否则：	如果有default，则执行
+		如果没有default，select会阻塞，直到某个通道可以运行
+*/
+
 func main() {
 	//定义channel
 	c := make(chan int)
