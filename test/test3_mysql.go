@@ -6,6 +6,6 @@ func openDB(*sql.DB, error) {
 
 }
 
-func main() {
+func main3() {
 
 }

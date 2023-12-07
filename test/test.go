@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func main() {
+func main0() {
 	fmt.Println(convert("PAYPALISHIRING", 3))
 }
 
