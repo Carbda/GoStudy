@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"context"
+	"fmt"
+	"time"
+)
 
 func main() {
 	fmt.Println(convert("PAYPALISHIRING", 3))
@@ -61,4 +65,23 @@ func convert(s string, numRows int) string {
 		ansStr = ansStr + tmpStr
 	}
 	return ansStr
+}
+
+func tmpFun() {
+	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
+	defer cancel()
+	go tmpFun2(ctx, 500*time.Millisecond)
+	select {
+	case <-ctx.Done():
+		fmt.Println("main", ctx.Err())
+	}
+}
+
+func tmpFun2(ctx context.Context, duration time.Duration) {
+	select {
+	case <-ctx.Done():
+		fmt.Println("handle", ctx.Err())
+	case <-time.After(duration):
+		fmt.Println("process request with", duration)
+	}
 }
