@@ -92,7 +92,7 @@ func (s *Server) Handler(conn net.Conn) {
 		select {
 		case <-isLive:
 			//不做任何事情，为了激活select，更新下面定时器
-		case <-time.After(10 * time.Second):
+		case <-time.After(60 * time.Second):
 			//已经超时
 			//将当前User强制关闭
 			user.SendMsg("you are kicked!\n")
