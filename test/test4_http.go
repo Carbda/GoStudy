@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func main() {
+func main4() {
 	// 绑定路由/hello
 	http.HandleFunc("/hello", helloHandle)
 	// 绑定路由到/test
