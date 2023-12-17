@@ -9,7 +9,8 @@ import (
 )
 
 func main() {
-	fmt.Println(GetAllCombination(3, 2))
+	//fmt.Println(GetAllCombination(3, 2))
+	testGetPvSameLevel()
 }
 
 func longestPalindrome(s string) string {
@@ -142,3 +143,33 @@ type intList []int
 func (s intList) Len() int           { return len(s) }
 func (s intList) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
 func (s intList) Less(i, j int) bool { return s[i] > s[j] }
+
+type ParseGroupView struct {
+	ParseGroupId int64 `json:"pg_id"`
+	ViewId       int32 `json:"view_id"`
+}
+
+// 主机组打标
+type HostGroupTag struct {
+	HostGroupUuid string `json:"host_group_uuid"`
+}
+
+type resourcePoolGenerationSvc struct {
+	sameLevel map[ParseGroupView]map[string]*HostGroupTag //map[pv]map[hgUuid]*HostGroupTag
+}
+
+func testGetPvSameLevel() {
+	p1 := ParseGroupView{ParseGroupId: 1, ViewId: 10}
+	p2 := ParseGroupView{ParseGroupId: 1, ViewId: 10}
+	rps := &resourcePoolGenerationSvc{
+		sameLevel: make(map[ParseGroupView]map[string]*HostGroupTag),
+	}
+	rps.sameLevel[p1] = make(map[string]*HostGroupTag)
+	rps.sameLevel[p1]["tmpStr"] = &HostGroupTag{HostGroupUuid: "tmpId"}
+	if res, ok := rps.sameLevel[p2]; ok {
+		fmt.Println(res)
+	}
+	if p1 == p2 {
+		fmt.Println("same")
+	}
+}
