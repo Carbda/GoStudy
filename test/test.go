@@ -8,9 +8,10 @@ import (
 	"time"
 )
 
-func main() {
+func main0() {
 	//fmt.Println(GetAllCombination(3, 2))
-	testGetPvSameLevel()
+	//testGetPvSameLevel()
+	testLenAndNil(nil)
 }
 
 func longestPalindrome(s string) string {
@@ -171,5 +172,13 @@ func testGetPvSameLevel() {
 	}
 	if p1 == p2 {
 		fmt.Println("same")
+	}
+}
+
+func testLenAndNil(arrStr []string) {
+	if len(arrStr) > 0 {
+		fmt.Println("> 0")
+	} else {
+		fmt.Println("<= 0")
 	}
 }
