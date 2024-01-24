@@ -6,7 +6,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func main() {
+func main6() {
 	username := "root"
 	password := "Wpp001029."
 	host := "127.0.0.1"
