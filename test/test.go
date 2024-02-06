@@ -8,11 +8,12 @@ import (
 	"time"
 )
 
-func main0() {
+func main() {
 	//fmt.Println(GetAllCombination(3, 2))
 	//testGetPvSameLevel()
 	//testLenAndNil(nil)
-	testMapNil()
+	//testMapNil()
+	testMin()
 }
 
 func longestPalindrome(s string) string {
@@ -197,4 +198,11 @@ func testMapNil() {
 	} else {
 		fmt.Println("no exist!")
 	}
+}
+
+func testMin() {
+	a := int64(70)
+	b := int64(12)
+	c := min(a, b)
+	fmt.Println(c)
 }

@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func main7() {
 	view5MinsBws := []int64{2000, 3000, 3000, 4000, 1000}
 	tuihuo(1500, view5MinsBws)
 }
