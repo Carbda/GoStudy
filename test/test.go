@@ -13,7 +13,8 @@ func main() {
 	//testGetPvSameLevel()
 	//testLenAndNil(nil)
 	//testMapNil()
-	testMin()
+	//testMin()
+	testMapLen()
 }
 
 func longestPalindrome(s string) string {
@@ -205,4 +206,22 @@ func testMin() {
 	b := int64(12)
 	c := min(a, b)
 	fmt.Println(c)
+}
+
+func testMapSpace() {
+	testM := make(map[string]map[int64]int64)
+	testM["123"] = make(map[int64]int64)
+	testM["123"][1] = 1
+	testM["123"][0] += 2
+	if _, exist := testM["123"][2]; !exist {
+		fmt.Println("no exist!")
+	}
+	fmt.Println(testM["123"][2])
+}
+
+func testMapLen() {
+	testM := make(map[string]int, 2)
+	fmt.Println(len(testM))
+	testM["123"] = 1
+	fmt.Println(len(testM))
 }
