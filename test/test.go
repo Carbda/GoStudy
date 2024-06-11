@@ -2,9 +2,11 @@ package main
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"sort"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -14,7 +16,16 @@ func main() {
 	//testLenAndNil(nil)
 	//testMapNil()
 	//testMin()
-	testMapLen()
+	//testMapLen()
+	//testTransStrToInt64Arr()
+	//testTimeNowDay()
+	//testMapLen2()
+	//testOop()
+	//testCircle()
+	//testArrLen0()
+	//testString()
+	//testDate()
+	testSort()
 }
 
 func longestPalindrome(s string) string {
@@ -224,4 +235,117 @@ func testMapLen() {
 	fmt.Println(len(testM))
 	testM["123"] = 1
 	fmt.Println(len(testM))
+}
+
+func testMapLen2() {
+	testM := make(map[int32][]int64, 0)
+	fmt.Println(len(testM[123]))
+}
+
+func testTransStrToInt64Arr() {
+	int64Arr, err := TransStrToInt64Arr("1", ",")
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		for _, item := range int64Arr {
+			fmt.Print(item, " ")
+		}
+	}
+}
+
+func TransStrToInt64Arr(src ...interface{}) ([]int64, error) {
+	if len(src) == 0 {
+		return nil, errors.New("param is nil")
+	}
+
+	tranFunc := func(srcArr []string) ([]int64, error) {
+		rs := make([]int64, 0, len(srcArr))
+		for _, v := range srcArr {
+			r, err := strconv.ParseInt(v, 10, 64)
+			if err != nil {
+				return nil, err
+			}
+
+			rs = append(rs, r)
+		}
+
+		return rs, nil
+	}
+
+	switch src[0].(type) {
+	case string:
+		if len(src) < 2 {
+			return nil, errors.New("illegal param length")
+		}
+
+		return tranFunc(strings.Split(src[0].(string), src[1].(string)))
+	case []string:
+		return tranFunc(src[0].([]string))
+	default:
+		return nil, errors.New("illegal param type")
+	}
+}
+
+func testTimeNowDay() {
+	nowDayInt := int64(time.Now().Day())
+	fmt.Println(nowDayInt)
+}
+
+func testOop() {
+	oop := GetOopIns()
+	if oop != nil {
+		fmt.Println(oop)
+	}
+}
+
+func testCircle() {
+	tmpArr := make([]string, 0)
+	tmpArr = append(tmpArr, "abc")
+	tmpArr = append(tmpArr, "abcd")
+	tmpArr = append(tmpArr, "ab")
+	tmpArr = append(tmpArr, "abcde")
+	for _, str := range tmpArr {
+		fmt.Println(str)
+	}
+}
+
+func testArrLen0() {
+	testArr := make([]int, 0)
+	testArr = append(testArr, 1)
+	sort.Slice(testArr, func(i, j int) bool {
+		return testArr[i] < testArr[j]
+	})
+}
+
+func testString() {
+	str := ""
+	str += "["
+	str2 := "abc"
+	str += str2 + ":" + str2
+	str += "]"
+	fmt.Println(str)
+}
+
+func testDate() {
+	date := time.Now().Format("2006-01-02")
+	str := "abc" + "-" + date
+	fmt.Println(str)
+}
+
+func testSort() {
+	bwArr := make([]int64, 0)
+	for i := int64(8640); i >= 0; i-- {
+		bwArr = append(bwArr, i)
+	}
+	fmt.Println(len(bwArr))
+	fmt.Println("start")
+	stTime := time.Now()
+	fmt.Println(stTime)
+	sort.Slice(bwArr, func(i, j int) bool {
+		return bwArr[i] < bwArr[j]
+	})
+	fmt.Println("end")
+	endTime := time.Now()
+	fmt.Println(endTime)
+	//fmt.Println(bwArr)
 }
