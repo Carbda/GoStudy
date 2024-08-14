@@ -14,7 +14,7 @@ func main() {
 	//fmt.Println(GetAllCombination(3, 2))
 	//testGetPvSameLevel()
 	//testLenAndNil(nil)
-	//testMapNil()
+	testMapNil()
 	//testMin()
 	//testMapLen()
 	//testTransStrToInt64Arr()
@@ -25,7 +25,7 @@ func main() {
 	//testArrLen0()
 	//testString()
 	//testDate()
-	testSort()
+	//testSort()
 }
 
 func longestPalindrome(s string) string {
@@ -204,7 +204,7 @@ func testMapNil() {
 	} else {
 		fmt.Println("no exist!")
 	}
-	testM[1] = 1
+	testM[1] = 0
 	if _, exist := testM[1]; exist {
 		fmt.Println("exist!")
 	} else {
