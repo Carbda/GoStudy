@@ -14,7 +14,7 @@ func main() {
 	//fmt.Println(GetAllCombination(3, 2))
 	//testGetPvSameLevel()
 	//testLenAndNil(nil)
-	testMapNil()
+	//testMapNil()
 	//testMin()
 	//testMapLen()
 	//testTransStrToInt64Arr()
@@ -26,6 +26,11 @@ func main() {
 	//testString()
 	//testDate()
 	//testSort()
+	//testMapIntoFunc()
+	//testMapForNil()
+	//testDaysInMonth()
+	//testMap2()
+	testTs()
 }
 
 func longestPalindrome(s string) string {
@@ -348,4 +353,51 @@ func testSort() {
 	endTime := time.Now()
 	fmt.Println(endTime)
 	//fmt.Println(bwArr)
+}
+
+func testMapIntoFunc() {
+	testMap := make(map[int64]string, 0)
+	testMap[1] = "abc"
+	fmt.Println(testMap)
+	testMapIntoFunc2(testMap)
+	fmt.Println(testMap)
+}
+
+func testMapIntoFunc2(testMap map[int64]string) {
+	testMap[1] = "cba"
+}
+
+func testMapForNil() {
+	var testMap map[int64]string
+	for _, item := range testMap {
+		fmt.Println(item)
+	}
+}
+
+func daysInMonth() int {
+	now := time.Now()
+	year, month, _ := now.Date()
+	days := time.Date(year, month+1, 0, 0, 0, 0, 0, time.UTC).Day()
+	return days
+}
+
+func testDaysInMonth() {
+	fmt.Println(daysInMonth())
+}
+
+func testMap2() {
+	testMap := make(map[int64]int64, 0)
+	testMap[1] = 1
+	testMap[2] = 2
+	testMap[3] = 3
+	for _, v := range testMap {
+		v = 123
+		fmt.Println(v)
+	}
+	fmt.Println(testMap)
+}
+
+func testTs() {
+	ts := int64(1741230875)
+	fmt.Println(time.Unix(ts, 0).Minute() % 5)
 }
